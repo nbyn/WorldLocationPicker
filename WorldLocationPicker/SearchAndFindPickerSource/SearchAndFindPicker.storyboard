@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Search And Find Picker-->
         <scene sceneID="CP2-Y5-BXw">
             <objects>
-                <viewController storyboardIdentifier="SearchAndFindPicker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="R7k-9v-sel" customClass="SearchAndFindPicker" customModule="SUITA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchAndFindPicker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="R7k-9v-sel" customClass="SearchAndFindPicker" customModule="WorldLocationPicker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BOz-Rr-hrI"/>
                         <viewControllerLayoutGuide type="bottom" id="gOk-yF-4FS"/>
@@ -22,24 +22,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="k4G-0A-1Vv">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PF8-of-kuE">
                                 <rect key="frame" x="38" y="100" width="300" height="467"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="CaQ-KL-c1W">
-                                        <rect key="frame" x="1" y="0.0" width="300" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="R7k-9v-sel" id="80p-vw-gij"/>
                                         </connections>
                                     </searchBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bfi-px-RG7">
-                                        <rect key="frame" x="1" y="44" width="300" height="350"/>
+                                        <rect key="frame" x="0.0" y="44" width="300" height="350"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchAndFindCell" id="dTp-8q-dB9" customClass="SearchAndFindCell" customModule="SUITA" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchAndFindCell" id="dTp-8q-dB9" customClass="SearchAndFindCell" customModule="WorldLocationPicker" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dTp-8q-dB9" id="cmr-76-a9I">
@@ -47,7 +44,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="isk-LM-NcE">
-                                                            <rect key="frame" x="15" y="9" width="205" height="25"/>
+                                                            <rect key="frame" x="15" y="9" width="240" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="VJS-7d-A9w"/>
                                                             </constraints>
@@ -56,7 +53,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLR-kF-SsR">
-                                                            <rect key="frame" x="221" y="9" width="25" height="25"/>
+                                                            <rect key="frame" x="265" y="9" width="25" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="1To-2l-UPA"/>
                                                                 <constraint firstAttribute="width" constant="25" id="ahb-Co-1Yk"/>
@@ -84,7 +81,7 @@
                                         </connections>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3G-9h-2uB">
-                                        <rect key="frame" x="51" y="427" width="75" height="30"/>
+                                        <rect key="frame" x="50" y="427" width="75" height="30"/>
                                         <color key="backgroundColor" red="0.78787499670000005" green="0.78811526300000001" blue="0.80946958069999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="mQ1-9H-aMO"/>
@@ -98,7 +95,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwc-Ut-MKs">
-                                        <rect key="frame" x="176" y="427" width="75" height="30"/>
+                                        <rect key="frame" x="175" y="427" width="75" height="30"/>
                                         <color key="backgroundColor" red="0.78787499670000005" green="0.78811526300000001" blue="0.80946958069999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Cancel">
@@ -131,15 +128,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="k4G-0A-1Vv" firstAttribute="leading" secondItem="aZx-bf-Yjv" secondAttribute="leading" id="FAK-mg-rN8"/>
                             <constraint firstItem="PF8-of-kuE" firstAttribute="width" secondItem="aZx-bf-Yjv" secondAttribute="width" multiplier="0.8" id="FMK-JO-DOE"/>
-                            <constraint firstItem="gOk-yF-4FS" firstAttribute="top" secondItem="k4G-0A-1Vv" secondAttribute="bottom" id="IRm-dc-Tgx"/>
                             <constraint firstItem="PF8-of-kuE" firstAttribute="height" secondItem="aZx-bf-Yjv" secondAttribute="height" multiplier="0.7" id="L9A-KW-wjh"/>
-                            <constraint firstAttribute="trailing" secondItem="k4G-0A-1Vv" secondAttribute="trailing" id="SdX-64-La2"/>
                             <constraint firstItem="k3G-9h-2uB" firstAttribute="width" secondItem="aZx-bf-Yjv" secondAttribute="width" multiplier="0.2" id="ctS-pa-TqJ"/>
                             <constraint firstItem="PF8-of-kuE" firstAttribute="centerY" secondItem="aZx-bf-Yjv" secondAttribute="centerY" id="xwW-ZR-joU"/>
                             <constraint firstItem="PF8-of-kuE" firstAttribute="centerX" secondItem="aZx-bf-Yjv" secondAttribute="centerX" id="yVy-jY-qbJ"/>
-                            <constraint firstItem="k4G-0A-1Vv" firstAttribute="top" secondItem="BOz-Rr-hrI" secondAttribute="bottom" id="ytd-5m-dHo"/>
                         </constraints>
                     </view>
                     <connections>
@@ -154,6 +147,5 @@
     </scenes>
     <resources>
         <image name="Checkmark-50.png" width="50" height="50"/>
-        <image name="black_bg.png" width="768" height="1024"/>
     </resources>
 </document>

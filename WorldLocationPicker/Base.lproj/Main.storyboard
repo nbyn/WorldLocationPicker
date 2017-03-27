@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,18 +40,45 @@
                                     <action selector="selectStateButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gtk-CD-Y8o"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcX-VK-VHM">
+                                <rect key="frame" x="20" y="176" width="335" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="pz8-xK-Hsb"/>
+                                </constraints>
+                                <state key="normal" title="Select City"/>
+                                <connections>
+                                    <action selector="selectCityButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1sC-vT-YxI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cD3-cQ-hCS">
+                                <rect key="frame" x="20" y="236" width="335" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="AMl-i9-Mne"/>
+                                </constraints>
+                                <state key="normal" title="Clear All"/>
+                                <connections>
+                                    <action selector="clearSelection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2SH-yV-ZDa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EBr-Wo-EM5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="2bz-Lr-Cls"/>
+                            <constraint firstItem="cD3-cQ-hCS" firstAttribute="trailing" secondItem="vcX-VK-VHM" secondAttribute="trailing" id="62h-xa-cjm"/>
                             <constraint firstItem="e5Z-tU-tQi" firstAttribute="top" secondItem="EBr-Wo-EM5" secondAttribute="bottom" constant="40" id="7tJ-gy-mRK"/>
+                            <constraint firstItem="vcX-VK-VHM" firstAttribute="leading" secondItem="e5Z-tU-tQi" secondAttribute="leading" id="EoR-se-d9d"/>
+                            <constraint firstItem="cD3-cQ-hCS" firstAttribute="top" secondItem="vcX-VK-VHM" secondAttribute="bottom" constant="30" id="LRT-pS-mbh"/>
+                            <constraint firstItem="cD3-cQ-hCS" firstAttribute="leading" secondItem="vcX-VK-VHM" secondAttribute="leading" id="R3j-ST-HKy"/>
+                            <constraint firstItem="vcX-VK-VHM" firstAttribute="trailing" secondItem="e5Z-tU-tQi" secondAttribute="trailing" id="U4T-Hh-ykP"/>
                             <constraint firstAttribute="trailing" secondItem="EBr-Wo-EM5" secondAttribute="trailing" constant="20" id="Wy4-Gv-gR5"/>
                             <constraint firstItem="e5Z-tU-tQi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="n2M-Yz-Ub2"/>
                             <constraint firstItem="EBr-Wo-EM5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="uEd-Xk-aeC"/>
                             <constraint firstAttribute="trailing" secondItem="e5Z-tU-tQi" secondAttribute="trailing" constant="20" id="uYm-PR-m8F"/>
+                            <constraint firstItem="vcX-VK-VHM" firstAttribute="top" secondItem="e5Z-tU-tQi" secondAttribute="bottom" constant="31" id="wkh-Im-kZa"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cityButton" destination="vcX-VK-VHM" id="f0F-hT-C1I"/>
                         <outlet property="countryButton" destination="EBr-Wo-EM5" id="LNS-RL-YFP"/>
                         <outlet property="stateButton" destination="e5Z-tU-tQi" id="YY6-FO-bQd"/>
                     </connections>

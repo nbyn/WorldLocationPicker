@@ -38,6 +38,21 @@ class WorldLocation : NSObject {
             } catch {}
         }
         return statesInfo
-}
+    }
+    
+    class func getCitiesList(stateID:String) -> [NSDictionary] {
+        
+        var citiesInfo = [NSDictionary]()
+        if let path = Bundle.main.path(forResource: "cities", ofType: "json") {
+            do {
+                let jsonData = try NSData(contentsOfFile: path, options: NSData.ReadingOptions.mappedIfSafe)
+                do {
+                    let jsonResult = try JSONSerialization.jsonObject(with: jsonData as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSArray
+                    citiesInfo = (jsonResult as! [NSDictionary]).filter{$0.value(forKey: "state_id") as! String == stateID}
+                } catch {}
+            } catch {}
+        }
+        return citiesInfo
+    }
     
 }

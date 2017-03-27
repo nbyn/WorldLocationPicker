@@ -12,7 +12,6 @@
 		9A05BE901E7EABCB00187F7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A05BE8E1E7EABCB00187F7B /* Main.storyboard */; };
 		9A05BE921E7EABCB00187F7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A05BE911E7EABCB00187F7B /* Assets.xcassets */; };
 		9A05BE951E7EABCB00187F7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A05BE931E7EABCB00187F7B /* LaunchScreen.storyboard */; };
-		9A5E47B11E80629000291FBA /* black_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5E47AC1E80628F00291FBA /* black_bg@2x.png */; };
 		9A5E47B21E80629000291FBA /* Checkmark-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5E47AD1E80628F00291FBA /* Checkmark-50.png */; };
 		9A5E47C11E80659C00291FBA /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A5E47BE1E80659C00291FBA /* countries.json */; };
 		9A5E47C21E80659C00291FBA /* states.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A5E47BF1E80659C00291FBA /* states.json */; };
@@ -20,6 +19,8 @@
 		9A5E47C71E8067DD00291FBA /* SearchAndFindCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E47C61E8067DD00291FBA /* SearchAndFindCell.swift */; };
 		9A5E47C91E80680F00291FBA /* SearchAndFindPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5E47C81E80680F00291FBA /* SearchAndFindPicker.swift */; };
 		9A5E47CB1E80681D00291FBA /* SearchAndFindPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5E47CA1E80681D00291FBA /* SearchAndFindPicker.storyboard */; };
+		9A8D32D61E89288A00ECE20A /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 9A8D32D51E89288A00ECE20A /* cities.json */; };
+		9A8D32D81E892BCA00ECE20A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8D32D71E892BCA00ECE20A /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +31,6 @@
 		9A05BE911E7EABCB00187F7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A05BE941E7EABCB00187F7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A05BE961E7EABCB00187F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9A5E47AC1E80628F00291FBA /* black_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black_bg@2x.png"; sourceTree = "<group>"; };
 		9A5E47AD1E80628F00291FBA /* Checkmark-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark-50.png"; sourceTree = "<group>"; };
 		9A5E47BE1E80659C00291FBA /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		9A5E47BF1E80659C00291FBA /* states.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = states.json; sourceTree = "<group>"; };
@@ -38,6 +38,8 @@
 		9A5E47C61E8067DD00291FBA /* SearchAndFindCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAndFindCell.swift; sourceTree = "<group>"; };
 		9A5E47C81E80680F00291FBA /* SearchAndFindPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAndFindPicker.swift; sourceTree = "<group>"; };
 		9A5E47CA1E80681D00291FBA /* SearchAndFindPicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchAndFindPicker.storyboard; sourceTree = "<group>"; };
+		9A8D32D51E89288A00ECE20A /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
+		9A8D32D71E892BCA00ECE20A /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,11 +87,11 @@
 		9A5E47AB1E80628F00291FBA /* SearchAndFindPickerSource */ = {
 			isa = PBXGroup;
 			children = (
-				9A5E47AC1E80628F00291FBA /* black_bg@2x.png */,
 				9A5E47AD1E80628F00291FBA /* Checkmark-50.png */,
 				9A5E47C61E8067DD00291FBA /* SearchAndFindCell.swift */,
 				9A5E47C81E80680F00291FBA /* SearchAndFindPicker.swift */,
 				9A5E47CA1E80681D00291FBA /* SearchAndFindPicker.storyboard */,
+				9A8D32D71E892BCA00ECE20A /* Extension.swift */,
 			);
 			path = SearchAndFindPickerSource;
 			sourceTree = "<group>";
@@ -100,6 +102,7 @@
 				9A5E47C41E8067AC00291FBA /* WorldLocation.swift */,
 				9A5E47BE1E80659C00291FBA /* countries.json */,
 				9A5E47BF1E80659C00291FBA /* states.json */,
+				9A8D32D51E89288A00ECE20A /* cities.json */,
 			);
 			path = WorldLocation;
 			sourceTree = "<group>";
@@ -164,11 +167,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A05BE951E7EABCB00187F7B /* LaunchScreen.storyboard in Resources */,
-				9A5E47B11E80629000291FBA /* black_bg@2x.png in Resources */,
 				9A05BE921E7EABCB00187F7B /* Assets.xcassets in Resources */,
 				9A05BE901E7EABCB00187F7B /* Main.storyboard in Resources */,
 				9A5E47C11E80659C00291FBA /* countries.json in Resources */,
 				9A5E47CB1E80681D00291FBA /* SearchAndFindPicker.storyboard in Resources */,
+				9A8D32D61E89288A00ECE20A /* cities.json in Resources */,
 				9A5E47B21E80629000291FBA /* Checkmark-50.png in Resources */,
 				9A5E47C21E80659C00291FBA /* states.json in Resources */,
 			);
@@ -184,6 +187,7 @@
 				9A5E47C71E8067DD00291FBA /* SearchAndFindCell.swift in Sources */,
 				9A5E47C91E80680F00291FBA /* SearchAndFindPicker.swift in Sources */,
 				9A5E47C51E8067AC00291FBA /* WorldLocation.swift in Sources */,
+				9A8D32D81E892BCA00ECE20A /* Extension.swift in Sources */,
 				9A05BE8D1E7EABCA00187F7B /* ViewController.swift in Sources */,
 				9A05BE8B1E7EABCA00187F7B /* AppDelegate.swift in Sources */,
 			);
@@ -309,6 +313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WorldLocationPicker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.WorldLocationPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -321,6 +326,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WorldLocationPicker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.WorldLocationPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";

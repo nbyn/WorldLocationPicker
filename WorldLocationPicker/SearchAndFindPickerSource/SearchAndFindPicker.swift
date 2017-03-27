@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 class SearchAndFindPicker : UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -32,7 +33,14 @@ class SearchAndFindPicker : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         self.searchBar.placeholder = "Search \(dataTypeStr)"
+        
+        self.searchBar.setTextColor(color: .black)
+        self.searchBar.setPlaceholderTextColor(color: .black)
+        self.searchBar.setTextFieldColor(color: .clear)
+        self.searchBar.setSearchImageColor(color: .black)
+        self.searchBar.setTextFieldClearButtonColor(color: .black)
     }
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
@@ -76,14 +84,17 @@ extension SearchAndFindPicker : UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
+        searchBar.setShowsCancelButton(true, animated: true)
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false;
+        searchBar.setShowsCancelButton(false, animated: true)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
+        self.view.endEditing(true)
         tableView.reloadData()
     }
     
@@ -142,7 +153,7 @@ extension SearchAndFindPicker : UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.cellForRow(at: indexPath) as! SearchAndFindCell
         cell.actionButton.isHidden = false
-        if (searchActive){
+        if (searchActive && filteredArray.count > 0) {
             selectedData = filteredArray[indexPath.row]
         }
         else {

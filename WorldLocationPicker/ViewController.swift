@@ -12,12 +12,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var countryButton: UIButton!
     @IBOutlet weak var stateButton: UIButton!
+    @IBOutlet weak var cityButton: UIButton!
     
     let countryList = WorldLocation.getCountriesList()
     var stateList = [NSDictionary]()
+    var cityList = [NSDictionary]()
     
     var selectedCountryID = ""
     var selectedStateID = ""
+    var selectedCityID = ""
     
     @IBAction func selectCountryTapped(_ sender: UIButton) {
         
@@ -40,8 +43,27 @@ class ViewController: UIViewController {
         searchPicker.doneButtonTapped =  { selectedData in
             sender.setTitle(selectedData.value(forKey: "name") as? String, for: .normal)
             self.selectedStateID = (selectedData.value(forKey: "id") as? String)!
+            self.cityList = WorldLocation.getCitiesList(stateID: self.selectedStateID)
         }
     }
     
+    @IBAction func selectCityButtonTapped(_ sender: UIButton) {
+        guard cityList.count > 0 else {
+            print("Select State First")
+            return
+        }
+        let searchPicker = SearchAndFindPicker.createPicker(dataArray: cityList, typeStr: "City")
+        searchPicker.show(vc: self)
+        searchPicker.doneButtonTapped =  { selectedData in
+            sender.setTitle(selectedData.value(forKey: "name") as? String, for: .normal)
+            self.selectedCityID = (selectedData.value(forKey: "id") as? String)!
+        }
+    }
+    @IBAction func clearSelection(_ sender: UIButton) {
+        
+        countryButton.setTitle("Select Country", for: .normal)
+        stateButton.setTitle("Select State", for: .normal)
+        cityButton.setTitle("Select City", for: .normal)
+    }
 }
 
