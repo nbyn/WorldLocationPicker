@@ -17,15 +17,15 @@ class SearchAndFindPicker : UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var searchActive : Bool = false
-    var filteredArray:[NSDictionary] = []
-    var dataArray = [NSDictionary]()
+    var filteredArray:[[String:AnyObject]] = []
+    var dataArray = [[String:AnyObject]]()
     
     var dataTypeStr = ""
     
-    var selectedData:NSDictionary!
-    var doneButtonTapped: ((NSDictionary)->())?
+    var selectedData:[String:AnyObject]!
+    var doneButtonTapped: (([String:AnyObject])->())?
     
-    static func createPicker(dataArray: [NSDictionary], typeStr : String) -> SearchAndFindPicker {
+    static func createPicker(dataArray: [[String:AnyObject]], typeStr : String) -> SearchAndFindPicker {
         let newViewController = UIStoryboard(name: "SearchAndFindPicker", bundle: nil).instantiateViewController(withIdentifier: "SearchAndFindPicker") as! SearchAndFindPicker
         newViewController.dataArray = dataArray
         newViewController.dataTypeStr = typeStr
@@ -93,9 +93,13 @@ class SearchAndFindPicker : UIViewController {
     
     func clearSelection() {
     
-        for data in dataArray {
-            data.setValue(true, forKey: "unselected")
+        var tempDataArray = [[String:AnyObject]]()
+        for i in 0..<dataArray.count {
+            var data = dataArray[i]
+            data.updateValue(0 as AnyObject, forKey: "unselected")
+            tempDataArray.append(data)
         }
+        dataArray = tempDataArray
         tableView.reloadData()
     }
     
@@ -126,7 +130,7 @@ extension SearchAndFindPicker : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredArray = dataArray.filter ({ (data) -> Bool in
-            if let tmp = data.value(forKey: "name") as? NSString {
+            if let tmp = data["name"] as? NSString {
                 let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
                 return range.location != NSNotFound
             }
@@ -159,12 +163,12 @@ extension SearchAndFindPicker : UITableViewDataSource, UITableViewDelegate {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "SearchAndFindCell", for: indexPath) as? SearchAndFindCell {
             if(searchActive && filteredArray.count > 0){
-                cell.labelName.text = filteredArray[indexPath.row].value(forKey: "name") as? String
+                cell.labelName.text = filteredArray[indexPath.row]["name"] as? String
             } else {
-                cell.labelName.text = dataArray[indexPath.row].value(forKey: "name") as? String
+                cell.labelName.text = dataArray[indexPath.row]["name"] as? String
             }
-            if let unselected = dataArray[indexPath.row].value(forKey: "unselected") as? Bool {
-                cell.actionButton.isHidden = unselected
+            if let unselected = dataArray[indexPath.row]["unselected"] as? Int {
+                cell.actionButton.isHidden = unselected == 0 ? true : false
             }
             return cell
         }

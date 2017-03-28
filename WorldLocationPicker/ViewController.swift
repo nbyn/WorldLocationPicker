@@ -24,11 +24,11 @@ class ViewController: UIViewController {
     
     @IBAction func selectCountryTapped(_ sender: UIButton) {
         
-        let searchPicker = SearchAndFindPicker.createPicker(dataArray: countryList, typeStr: "Country")
+        let searchPicker = SearchAndFindPicker.createPicker(dataArray: countryList as! [[String : AnyObject]], typeStr: "Country")
         searchPicker.show(vc: self)
         searchPicker.doneButtonTapped =  { selectedData in
-            sender.setTitle(selectedData.value(forKey: "name") as? String, for: .normal)
-            self.selectedCountryID = (selectedData.value(forKey: "id") as? String)!
+            sender.setTitle(selectedData["name"] as? String, for: .normal)
+            self.selectedCountryID = (selectedData["id"] as? String)!
             self.stateList = WorldLocation.getStatesList(countryID: self.selectedCountryID)
         }
     }
@@ -38,11 +38,11 @@ class ViewController: UIViewController {
             print("Select Country First")
             return
         }
-        let searchPicker = SearchAndFindPicker.createPicker(dataArray: stateList, typeStr: "State")
+        let searchPicker = SearchAndFindPicker.createPicker(dataArray: stateList as! [[String : AnyObject]], typeStr: "State")
         searchPicker.show(vc: self)
         searchPicker.doneButtonTapped =  { selectedData in
-            sender.setTitle(selectedData.value(forKey: "name") as? String, for: .normal)
-            self.selectedStateID = (selectedData.value(forKey: "id") as? String)!
+            sender.setTitle(selectedData[ "name"] as? String, for: .normal)
+            self.selectedStateID = (selectedData[ "id"] as? String)!
             self.cityList = WorldLocation.getCitiesList(stateID: self.selectedStateID)
         }
     }
@@ -52,11 +52,11 @@ class ViewController: UIViewController {
             print("Select State First")
             return
         }
-        let searchPicker = SearchAndFindPicker.createPicker(dataArray: cityList, typeStr: "City")
+        let searchPicker = SearchAndFindPicker.createPicker(dataArray: cityList as! [[String : AnyObject]], typeStr: "City")
         searchPicker.show(vc: self)
         searchPicker.doneButtonTapped =  { selectedData in
-            sender.setTitle(selectedData.value(forKey: "name") as? String, for: .normal)
-            self.selectedCityID = (selectedData.value(forKey: "id") as? String)!
+            sender.setTitle(selectedData["name"] as? String, for: .normal)
+            self.selectedCityID = (selectedData[ "id"] as? String)!
         }
     }
     @IBAction func clearSelection(_ sender: UIButton) {
