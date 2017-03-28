@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,6 +21,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VK-B5-0lx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PF8-of-kuE">
                                 <rect key="frame" x="38" y="100" width="300" height="467"/>
                                 <subviews>
@@ -128,14 +131,19 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gOk-yF-4FS" firstAttribute="top" secondItem="6VK-B5-0lx" secondAttribute="bottom" id="AVG-5d-ixE"/>
                             <constraint firstItem="PF8-of-kuE" firstAttribute="width" secondItem="aZx-bf-Yjv" secondAttribute="width" multiplier="0.8" id="FMK-JO-DOE"/>
+                            <constraint firstAttribute="trailing" secondItem="6VK-B5-0lx" secondAttribute="trailing" id="IDg-WV-htW"/>
                             <constraint firstItem="PF8-of-kuE" firstAttribute="height" secondItem="aZx-bf-Yjv" secondAttribute="height" multiplier="0.7" id="L9A-KW-wjh"/>
+                            <constraint firstItem="6VK-B5-0lx" firstAttribute="leading" secondItem="aZx-bf-Yjv" secondAttribute="leading" id="Vds-ru-ZGY"/>
                             <constraint firstItem="k3G-9h-2uB" firstAttribute="width" secondItem="aZx-bf-Yjv" secondAttribute="width" multiplier="0.2" id="ctS-pa-TqJ"/>
+                            <constraint firstItem="6VK-B5-0lx" firstAttribute="top" secondItem="aZx-bf-Yjv" secondAttribute="top" id="sD7-rW-0ff"/>
                             <constraint firstItem="PF8-of-kuE" firstAttribute="centerY" secondItem="aZx-bf-Yjv" secondAttribute="centerY" id="xwW-ZR-joU"/>
                             <constraint firstItem="PF8-of-kuE" firstAttribute="centerX" secondItem="aZx-bf-Yjv" secondAttribute="centerX" id="yVy-jY-qbJ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="6VK-B5-0lx" id="Pfs-6f-LeF"/>
                         <outlet property="searchBar" destination="CaQ-KL-c1W" id="Miv-yd-FrH"/>
                         <outlet property="tableView" destination="bfi-px-RG7" id="IaB-Gp-gFD"/>
                     </connections>

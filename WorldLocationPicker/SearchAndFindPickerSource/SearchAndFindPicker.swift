@@ -12,6 +12,7 @@ import UIKit
 
 class SearchAndFindPicker : UIViewController {
     
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,9 +32,20 @@ class SearchAndFindPicker : UIViewController {
         return newViewController
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         self.searchBar.placeholder = "Search \(dataTypeStr)"
         
         self.searchBar.setTextColor(color: .black)
@@ -41,6 +53,18 @@ class SearchAndFindPicker : UIViewController {
         self.searchBar.setTextFieldColor(color: .clear)
         self.searchBar.setSearchImageColor(color: .black)
         self.searchBar.setTextFieldClearButtonColor(color: .black)
+        
+        backgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped(tapGestureRecognizer:)))
+        backgroundView.isUserInteractionEnabled = true
+        backgroundView.addGestureRecognizer(tapGestureRecognizer)
+        
+        clearSelection()
+    }
+    
+    func backgroundTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
@@ -68,14 +92,11 @@ class SearchAndFindPicker : UIViewController {
     }
     
     func clearSelection() {
-        
-        if let selectedItems = tableView.indexPathsForSelectedRows {
-            for iPath in selectedItems {
-                tableView.deselectRow(at: iPath, animated: true)
-                let cell = tableView.cellForRow(at: iPath) as! SearchAndFindCell
-                cell.actionButton.isHidden = true
-            }
+    
+        for data in dataArray {
+            data.setValue(true, forKey: "unselected")
         }
+        tableView.reloadData()
     }
     
 }
@@ -105,9 +126,11 @@ extension SearchAndFindPicker : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredArray = dataArray.filter ({ (data) -> Bool in
-            let tmp = data.value(forKey: "name") as! NSString
-            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
-            return range.location != NSNotFound
+            if let tmp = data.value(forKey: "name") as? NSString {
+                let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+                return range.location != NSNotFound
+            }
+            return false
         })
         if(filteredArray.count == 0){
             searchActive = false;
@@ -134,30 +157,74 @@ extension SearchAndFindPicker : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchAndFindCell", for: indexPath) as! SearchAndFindCell
-        if(searchActive){
-            cell.labelName.text = filteredArray[indexPath.row].value(forKey: "name") as? String
-        } else {
-            cell.labelName.text = dataArray[indexPath.row].value(forKey: "name") as? String
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "SearchAndFindCell", for: indexPath) as? SearchAndFindCell {
+            if(searchActive && filteredArray.count > 0){
+                cell.labelName.text = filteredArray[indexPath.row].value(forKey: "name") as? String
+            } else {
+                cell.labelName.text = dataArray[indexPath.row].value(forKey: "name") as? String
+            }
+            if let unselected = dataArray[indexPath.row].value(forKey: "unselected") as? Bool {
+                cell.actionButton.isHidden = unselected
+            }
+            return cell
         }
-        cell.actionButton.isHidden = true
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        clearSelection()
-        return indexPath
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let cell = tableView.cellForRow(at: indexPath) as! SearchAndFindCell
-        cell.actionButton.isHidden = false
-        if (searchActive && filteredArray.count > 0) {
-            selectedData = filteredArray[indexPath.row]
-        }
-        else {
-            selectedData = dataArray[indexPath.row]
+        clearSelection()
+        if let cell = tableView.cellForRow(at: indexPath) as? SearchAndFindCell {
+            cell.actionButton.isHidden = false
+            if (searchActive && filteredArray.count > 0) {
+                selectedData = filteredArray[indexPath.row]
+            }
+            else {
+                selectedData = dataArray[indexPath.row]
+            }
         }
     }
+}
+
+extension SearchAndFindPicker {
+    
+    func keyBoardWillShow() {
+        if self.view.frame.origin.y >= 0 {
+            setViewMovedUp(movedUp: true)
+        }
+        else if self.view.frame.origin.y < 0 {
+            setViewMovedUp(movedUp: false)
+        }
+    }
+    
+    func keyBoardWillHide() {
+        if self.view.frame.origin.y >= 0 {
+            setViewMovedUp(movedUp: true)
+        }
+        else if self.view.frame.origin.y < 0 {
+            setViewMovedUp(movedUp: false)
+        }
+    }
+    
+    func setViewMovedUp(movedUp: Bool){
+        
+        let kOffset:CGFloat = 80.0
+        
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationDuration(0.3)
+        
+        var rect = self.view.frame
+        
+        if movedUp {
+            rect.origin.y -= kOffset;
+            rect.size.height += kOffset;
+        }
+        else
+        {
+            rect.origin.y += kOffset;
+            rect.size.height -= kOffset;
+        }
+        self.view.frame = rect;
+        UIView.commitAnimations()
+    }
+    
 }
